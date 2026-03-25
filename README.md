@@ -2,7 +2,7 @@
 
 Launch static experiments on Cloudflare Pages with a single command. This starter gives you:
 
-- `setup-deployment-funnel.sh` – guided installer that sets up Wrangler, authenticates, creates (or reuses) a Pages project, generates a reusable helper script, and optionally adds a zsh alias.
+- `setup-deployment-funnel.sh` – guided installer that sets up Wrangler, authenticates, creates (or reuses) a Pages project, and generates a reusable helper script.
 - `demo-site/` – minimal HTML you can deploy immediately or replace with your own files.
 
 ---
@@ -45,20 +45,18 @@ During setup it will:
 - Log in with `wrangler login` when no session exists.
 - Create or reuse the Pages project.
 - Generate the helper script and make it executable.
-- Append `alias publishfunnel='<helper-path>'` to `~/.zshrc` (only once).
+- Print the helper location (default `./publishfunnel.sh`) so you can deploy in one command later.
 
 ---
 
 ## 3. Deploy
 
-The installer prints the helper location (default `./publishfunnel.sh`). Run it directly:
+Run the helper script directly:
 
 ```bash
 ./publishfunnel.sh                         # uses the defaults chosen during setup
 ./publishfunnel.sh my-project /path/to/site   # override project + directory
 ```
-
-If you use `zsh`, the installer also appends `alias publishfunnel='<helper-path>'` to `~/.zshrc`; sourcing that file lets you keep using the short command, but it’s optional.
 
 Each run zips the target directory, uploads it, and prints both the preview URL and canonical `https://<project>.pages.dev`. Use Cloudflare Access if you need password/SSO gating.
 
@@ -74,6 +72,14 @@ Edit files inside your configured site directory (the default `demo-site/index.h
 
 - **Wrangler install/auth errors** – ensure Node.js + npm work (`node -v`, `npm -v`), then rerun `npm install -g wrangler` or the setup script.
 - **Project already exists** – the script ignores the creation error and continues; just make sure you picked the right project slug.
-- **Alias not found** – verify `publishfunnel` appears in `~/.zshrc`, then `source ~/.zshrc` or start a new shell.
-
 Feel free to customize the helper script or README to fit your workflow.
+
+---
+
+## 6. Example Flow
+
+1. `git clone https://github.com/you/cloudflare-funnel-starter.git && cd cloudflare-funnel-starter`
+2. `./setup-deployment-funnel.sh`  
+   - Respond `demo-app` for the slug, `/Users/you/sites/demo-app` for the directory, `/Users/you/bin/publishfunnel.sh` for the helper path.
+3. Edit `/Users/you/sites/demo-app/index.html`.
+4. Run `/Users/you/bin/publishfunnel.sh` to deploy. Cloudflare prints preview + canonical URLs in a few seconds.
