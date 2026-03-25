@@ -19,10 +19,9 @@ Launch static experiments on Cloudflare Pages with a single command. This starte
 
 ## 2. Install & Configure
 
-Clone the repo and run the setup script:
+Clone the repo wherever you keep projects, then run the guided setup:
 
 ```bash
-cd ~/Sites/ai-agents-workspace
 git clone https://github.com/you/cloudflare-funnel-starter.git
 cd cloudflare-funnel-starter
 
@@ -30,11 +29,13 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-You’ll answer three prompts (press Enter to accept the default in brackets):
+You’ll answer three prompts (press Enter to accept the suggested default):
 
-1. **Project slug** – becomes `https://<slug>.pages.dev`. Existing slugs reuse the project; new slugs create one.
-2. **Absolute directory to deploy** – points to the local folder you want uploaded. Missing folders get seeded with `demo-site/`.
-3. **Helper script path** – where the reusable deploy script (e.g., `publishfunnel.sh`) should live. You’ll run this file later, alias optional.
+| Prompt | What to type | Default |
+| --- | --- | --- |
+| Project slug | Name of the Pages project → `https://<slug>.pages.dev` | `private-funnel` |
+| Directory to deploy | Absolute path to the folder you want uploaded; missing paths get seeded with `demo-site/` | `./demo-site` |
+| Helper script path | Where to create the reusable deploy helper you’ll run later | `./publishfunnel.sh` |
 
 If Wrangler isn’t logged in, it opens a browser window after the prompts so you can authorize the CLI.
 
