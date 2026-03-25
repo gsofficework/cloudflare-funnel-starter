@@ -92,14 +92,6 @@ path.write_text(data)
 PY
 chmod +x "$HELPER_PATH"
 
-ALIAS_LINE="alias publishfunnel='$HELPER_PATH'"
-if ! grep -Fq "$ALIAS_LINE" "$HOME/.zshrc"; then
-  echo "$ALIAS_LINE" >> "$HOME/.zshrc"
-  echo "Added publishfunnel alias to ~/.zshrc (optional shortcut for zsh users)"
-else
-echo "publishfunnel alias already present in ~/.zshrc"
-fi
-
 echo "Setup complete. You can deploy $SITE_DIR to https://$PROJECT_NAME.pages.dev using $HELPER_PATH."
 read -r -p "Run it now? [y/N]: " RUN_NOW
 case "$RUN_NOW" in
