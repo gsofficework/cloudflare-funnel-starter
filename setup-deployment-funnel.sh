@@ -6,6 +6,11 @@ DEFAULT_PROJECT="private-funnel"
 DEFAULT_SITE_DIR="$SCRIPT_DIR/demo-site"
 DEFAULT_HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
 
+echo "Cloudflare Deployment Funnel Setup"
+echo "----------------------------------"
+echo "You will choose a Pages project, a local folder to deploy, and where to store the helper script."
+echo "If you are not already logged in with Wrangler, this script will open a browser window later to authenticate."
+
 echo
 echo "Step 1: Choose a Cloudflare Pages project slug."
 echo "  - This becomes the public URL: https://<slug>.pages.dev"

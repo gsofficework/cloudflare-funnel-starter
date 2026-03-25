@@ -27,7 +27,7 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-During setup you’ll answer three guided prompts (press Enter to accept the default shown in brackets):
+During setup you’ll answer three guided prompts (press Enter to accept the default shown in brackets). If Wrangler is not already authenticated it will open your browser afterward so you can log in.
 
 1. **Project slug** – becomes the URL `https://<slug>.pages.dev`. Provide an existing slug to reuse it or type a new slug to auto-create the project.
 2. **Absolute directory to deploy** – the local folder that holds your HTML/CSS/JS. If it doesn’t exist, the demo site is copied there.
