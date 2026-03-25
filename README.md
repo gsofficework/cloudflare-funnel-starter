@@ -51,7 +51,7 @@ During setup it will:
 
 ## 3. Deploy
 
-Run the helper script directly:
+After setup you’re prompted to run the helper immediately (type `y` to deploy on the spot, or Enter to skip). You can also run it later:
 
 ```bash
 ./publishfunnel.sh                         # uses the defaults chosen during setup

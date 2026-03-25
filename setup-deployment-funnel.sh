@@ -97,7 +97,16 @@ if ! grep -Fq "$ALIAS_LINE" "$HOME/.zshrc"; then
   echo "$ALIAS_LINE" >> "$HOME/.zshrc"
   echo "Added publishfunnel alias to ~/.zshrc (optional shortcut for zsh users)"
 else
-  echo "publishfunnel alias already present in ~/.zshrc"
+echo "publishfunnel alias already present in ~/.zshrc"
 fi
 
-echo "Setup complete. Run '$HELPER_PATH' (or use the publishfunnel alias) to deploy $SITE_DIR to https://$PROJECT_NAME.pages.dev."
+echo "Setup complete. You can deploy $SITE_DIR to https://$PROJECT_NAME.pages.dev using $HELPER_PATH."
+read -r -p "Run it now? [y/N]: " RUN_NOW
+case "$RUN_NOW" in
+  [yY][eE][sS]|[yY])
+    "$HELPER_PATH"
+    ;;
+  *)
+    echo "Skipping automatic deploy. Run '$HELPER_PATH' later when ready."
+    ;;
+esac
