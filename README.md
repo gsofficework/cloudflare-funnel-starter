@@ -38,12 +38,14 @@ During setup it will:
 - Generate the helper script and make it executable.
 - Append `alias publishfunnel='<helper-path>'` to `~/.zshrc` (only once).
 
-After setup, reload your shell (`source ~/.zshrc`) and deploy from anywhere:
+After setup the script prints the full path to your helper (default `./publishfunnel.sh`). Run it directly from any shell:
 
 ```bash
-publishfunnel                # uses the defaults from setup
-publishfunnel my-project /path/to/another/site   # override target project + folder
+./publishfunnel.sh                         # uses the defaults chosen during setup
+./publishfunnel.sh my-project /path/to/site   # override project + directory
 ```
+
+If you use `zsh`, the installer also appends `alias publishfunnel='<helper-path>'` to `~/.zshrc`; sourcing that file lets you keep using the short command, but it’s optional.
 
 Each run zips the target directory, uploads it to Cloudflare Pages, and prints both the preview URL and canonical `https://<project>.pages.dev`. Apply Cloudflare Access rules to that domain whenever you need password/SSO gating.
 
