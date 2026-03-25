@@ -6,13 +6,28 @@ DEFAULT_PROJECT="private-funnel"
 DEFAULT_SITE_DIR="$SCRIPT_DIR/demo-site"
 DEFAULT_HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
 
-read -r -p "Cloudflare Pages project name [$DEFAULT_PROJECT]: " PROJECT_NAME
+echo
+echo "Step 1: Choose a Cloudflare Pages project slug."
+echo "  - This becomes the public URL: https://<slug>.pages.dev"
+echo "  - Enter an existing slug to reuse it, or a new slug to create a project."
+echo "  - Press Enter to accept the default shown in brackets."
+read -r -p "Project slug [$DEFAULT_PROJECT]: " PROJECT_NAME
 PROJECT_NAME=${PROJECT_NAME:-$DEFAULT_PROJECT}
 
-read -r -p "Directory to deploy (absolute path) [$DEFAULT_SITE_DIR]: " SITE_DIR
+echo
+echo "Step 2: Tell me which local folder to deploy."
+echo "  - Provide an absolute path (e.g., /Users/you/sites/demo)."
+echo "  - If the folder is missing, a copy of demo-site/ will be created there."
+echo "  - Press Enter to use the starter demo directory."
+read -r -p "Absolute path to deploy [$DEFAULT_SITE_DIR]: " SITE_DIR
 SITE_DIR=${SITE_DIR:-$DEFAULT_SITE_DIR}
 
-read -r -p "Where should the helper script live? [$DEFAULT_HELPER_PATH]: " HELPER_PATH
+echo
+echo "Step 3: Pick where the reusable helper script should live."
+echo "  - You will run this script later to deploy in one command."
+echo "  - It can live inside this repo or anywhere on disk."
+echo "  - Press Enter to keep it here (publishfunnel.sh)."
+read -r -p "Helper script path [$DEFAULT_HELPER_PATH]: " HELPER_PATH
 HELPER_PATH=${HELPER_PATH:-$DEFAULT_HELPER_PATH}
 
 if [ ! -d "$SITE_DIR" ]; then

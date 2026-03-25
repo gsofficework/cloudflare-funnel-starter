@@ -27,11 +27,11 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-The script will prompt for:
+During setup you’ll answer three guided prompts (press Enter to accept the default shown in brackets):
 
-1. **Cloudflare Pages project name** (default `private-funnel`). A project is created if it does not exist.
-2. **Directory to deploy** (default `./demo-site`). The sample site is copied there when missing.
-3. **Helper script location** (default `./publishfunnel.sh`). This file runs `wrangler pages deploy …` for you.
+1. **Project slug** – becomes the URL `https://<slug>.pages.dev`. Provide an existing slug to reuse it or type a new slug to auto-create the project.
+2. **Absolute directory to deploy** – the local folder that holds your HTML/CSS/JS. If it doesn’t exist, the demo site is copied there.
+3. **Helper script path** – where the reusable deployment script lives (you’ll run this file or use the alias later).
 
 During setup it will:
 
