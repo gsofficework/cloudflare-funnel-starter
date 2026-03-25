@@ -7,7 +7,10 @@ Spin up a "one command" static-site deployment to Cloudflare Pages. This repo co
 
 ## Prerequisites
 
-- macOS/Linux shell with `bash`, `git`, **Node.js (includes npm)** on the PATH
+- macOS/Linux shell with `bash`, `git`, **Node.js (includes npm)** on the PATH  
+  - macOS: `brew install node`  
+  - Linux: `curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs`  
+  - Windows / other: use nvm or download from https://nodejs.org
 - Cloudflare account with permission to create Pages projects
 - Ability to authenticate in a browser (Wrangler uses OAuth login)
 

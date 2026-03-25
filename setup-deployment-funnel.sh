@@ -24,7 +24,10 @@ fi
 if ! command -v node >/dev/null 2>&1; then
   cat >&2 <<'MSG'
 [setup] Node.js is required to install Wrangler.
-Install it first (e.g. `brew install node` or `nvm install --lts`) and re-run this script.
+- macOS (Homebrew):    brew install node
+- Linux (Debian/Ubuntu): curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs
+- Windows / other shells: install from https://nodejs.org or use nvm (https://github.com/nvm-sh/nvm)
+After Node.js + npm are available, re-run this script.
 MSG
   exit 1
 fi
