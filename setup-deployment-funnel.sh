@@ -21,9 +21,17 @@ if [ ! -d "$SITE_DIR" ]; then
   cp -R "$DEFAULT_SITE_DIR/." "$SITE_DIR" 2>/dev/null || true
 fi
 
+if ! command -v node >/dev/null 2>&1; then
+  cat >&2 <<'MSG'
+[setup] Node.js is required to install Wrangler.
+Install it first (e.g. `brew install node` or `nvm install --lts`) and re-run this script.
+MSG
+  exit 1
+fi
+
 if ! command -v wrangler >/dev/null 2>&1; then
   if ! command -v npm >/dev/null 2>&1; then
-    echo "npm is required to install wrangler" >&2
+    echo "[setup] npm was not found on PATH; install Node.js + npm before continuing." >&2
     exit 1
   fi
   echo "Installing Cloudflare Wrangler CLI via npm..."

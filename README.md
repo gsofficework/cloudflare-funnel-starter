@@ -7,7 +7,7 @@ Spin up a "one command" static-site deployment to Cloudflare Pages. This repo co
 
 ## Prerequisites
 
-- macOS/Linux shell with `bash`, `npm`, and `git` available
+- macOS/Linux shell with `bash`, `git`, **Node.js (includes npm)** on the PATH
 - Cloudflare account with permission to create Pages projects
 - Ability to authenticate in a browser (Wrangler uses OAuth login)
 
@@ -55,7 +55,7 @@ Edit files inside your configured site directory (the default `demo-site/index.h
 
 ## Troubleshooting
 
-- **Wrangler install/auth errors** – ensure `npm install -g wrangler` succeeds and rerun `wrangler login` manually if prompted.
+- **Wrangler install/auth errors** – ensure Node.js + npm are installed (`node -v`, `npm -v` should work), then rerun `npm install -g wrangler` or the setup script.
 - **Project already exists** – the script ignores the creation error and continues; just make sure you picked the right project slug.
 - **Alias not found** – verify `publishfunnel` appears in `~/.zshrc`, then `source ~/.zshrc` or start a new shell.
 
