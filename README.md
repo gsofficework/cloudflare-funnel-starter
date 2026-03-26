@@ -16,9 +16,9 @@ Running the script will:
 
 1. Install [Wrangler](https://developers.cloudflare.com/workers/wrangler/) (Cloudflare's CLI) if you don't have it
 2. Log you in to your Cloudflare account via browser
-3. Ask which local folder you want to deploy
-4. Create a Cloudflare Pages project for you
-5. Deploy your site and give you a live URL
+3. Ask which Cloudflare Pages project slug you want to use (e.g., `demo-app`)
+4. Ask which local folder you want to deploy
+5. Create (or reuse) the Pages project and deploy your site
 
 Need to redeploy later? Just rerun the same script from whatever folder you want to publish.
 
@@ -62,11 +62,12 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-You'll be asked **one simple question** — **press Enter to accept the default** if you're not sure:
+You'll be asked **two simple questions** — **press Enter to accept defaults** if you're not sure:
 
 | Prompt | What it means | Tip |
 |--------|--------------|-----|
-| **Which folder to deploy?** | The local folder whose files will go live | Press Enter to use the current directory, or paste an absolute path like `/Users/you/sites/my-project` |
+| **Project slug** | Name of the Cloudflare Pages project → becomes `https://<slug>.pages.dev` | Enter an existing slug to reuse it, or type a new slug (default `private-funnel`) |
+| **Which folder to deploy?** | Local folder whose files will go live | Press Enter to use the current directory, or paste an absolute path like `/Users/you/sites/my-project` |
 
 If you're not logged in to Cloudflare yet, a **browser window will open** — just click "Allow" to authorize.
 
