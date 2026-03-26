@@ -34,7 +34,7 @@ You’ll answer three prompts (press Enter to accept the suggested default):
 | Prompt | What to type | Default |
 | --- | --- | --- |
 | Project slug | Name of the Pages project → `https://<slug>.pages.dev` | `private-funnel` |
-| Directory to deploy | Absolute path to the folder you want uploaded; missing paths get seeded with `demo-site/` | `./demo-site` |
+| Directory to deploy | Absolute path to the folder you want uploaded; missing paths get seeded with `demo-site/` | Current working directory |
 | Helper script path | Full path to the helper script the installer will create (you run this file—e.g., `/path/to/publishfunnel.sh`) | `./publishfunnel.sh` |
 
 If Wrangler isn’t logged in, it opens a browser window after the prompts so you can authorize the CLI.

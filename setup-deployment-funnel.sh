@@ -3,8 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_PROJECT="private-funnel"
-DEFAULT_SITE_DIR="$SCRIPT_DIR/demo-site"
+DEFAULT_SITE_DIR="$(pwd)"
 DEFAULT_HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
+TEMPLATE_SITE_DIR="$SCRIPT_DIR/demo-site"
 
 echo "Cloudflare Deployment Funnel Setup"
 echo "----------------------------------"
@@ -23,9 +24,10 @@ echo
 echo "Step 2: Tell me which local folder to deploy."
 echo "  - Provide an absolute path (e.g., /Users/you/sites/demo)."
 echo "  - If the folder is missing, a copy of demo-site/ will be created there."
-echo "  - Press Enter to use the starter demo directory."
+echo "  - Press Enter to use your current directory ($(pwd))."
 read -r -p "Absolute path to deploy [$DEFAULT_SITE_DIR]: " SITE_DIR
 SITE_DIR=${SITE_DIR:-$DEFAULT_SITE_DIR}
+echo "Selected directory: $SITE_DIR"
 
 echo
 echo "Step 3: Pick where the reusable helper script should live."
@@ -38,7 +40,7 @@ HELPER_PATH=${HELPER_PATH:-$DEFAULT_HELPER_PATH}
 if [ ! -d "$SITE_DIR" ]; then
   echo "Creating site directory at $SITE_DIR"
   mkdir -p "$SITE_DIR"
-  cp -R "$DEFAULT_SITE_DIR/." "$SITE_DIR" 2>/dev/null || true
+  cp -R "$TEMPLATE_SITE_DIR/." "$SITE_DIR" 2>/dev/null || true
 fi
 
 if ! command -v node >/dev/null 2>&1; then
