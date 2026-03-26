@@ -4,7 +4,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_SLUG="private-funnel"
 DEFAULT_SITE_DIR="$(pwd)"
-HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
 TEMPLATE_SITE_DIR="$SCRIPT_DIR/demo-site"
 
 echo "Cloudflare Deployment Funnel Setup"
@@ -25,10 +24,6 @@ SITE_DIR=${SITE_DIR:-$DEFAULT_SITE_DIR}
 echo "Selected directory: $SITE_DIR"
 
 echo
-echo
-echo "Helper script will be saved to: $HELPER_PATH"
-echo "Move or rename it later if you prefer a different location."
-
 if [ ! -d "$SITE_DIR" ]; then
   echo "Creating site directory at $SITE_DIR"
   mkdir -p "$SITE_DIR"
@@ -62,38 +57,11 @@ fi
 
 wrangler pages project create "$PROJECT_NAME" --production-branch main >/dev/null 2>&1 ||   echo "Project $PROJECT_NAME may already exist. Continuing."
 
-cat <<'SCRIPT' > "$HELPER_PATH"
-#!/usr/bin/env bash
-set -euo pipefail
-project="${1:-PROJECT_PLACEHOLDER}"
-site_dir="${2:-SITE_PLACEHOLDER}"
-if [ ! -d "$site_dir" ]; then
-  echo "Directory $site_dir does not exist" >&2
-  exit 1
-fi
-echo "Deploying directory: $site_dir"
-pushd "$site_dir" >/dev/null
-wrangler pages deploy . --project-name="$project" --commit-dirty=true
+echo "Deploying directory: $SITE_DIR"
+pushd "$SITE_DIR" >/dev/null
+wrangler pages deploy . --project-name="$PROJECT_NAME" --commit-dirty=true
 popd >/dev/null
-echo "Deployed $site_dir to https://$project.pages.dev (check Cloudflare dashboard for Access policies)"
-SCRIPT
+echo "Deployed $SITE_DIR to https://$PROJECT_NAME.pages.dev (check Cloudflare dashboard for Access policies)"
 
-python3 <<PY
-from pathlib import Path
-path = Path(r"$HELPER_PATH")
-data = path.read_text()
-data = data.replace("PROJECT_PLACEHOLDER", r"$PROJECT_NAME").replace("SITE_PLACEHOLDER", r"$SITE_DIR")
-path.write_text(data)
-PY
-chmod +x "$HELPER_PATH"
-
-echo "Setup complete. You can deploy $SITE_DIR to https://$PROJECT_NAME.pages.dev using $HELPER_PATH."
-read -r -p "Run it now? [y/N]: " RUN_NOW
-case "$RUN_NOW" in
-  [yY][eE][sS]|[yY])
-    "$HELPER_PATH"
-    ;;
-  *)
-    echo "Skipping automatic deploy. Run '$HELPER_PATH' later when ready."
-    ;;
-esac
+echo
+echo "To deploy changes in the future, rerun ./setup-deployment-funnel.sh from this folder (or copy it elsewhere and run it there)."
