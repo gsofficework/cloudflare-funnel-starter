@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_SLUG="private-funnel"
 DEFAULT_SITE_DIR="$(pwd)"
-DEFAULT_HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
+HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
 TEMPLATE_SITE_DIR="$SCRIPT_DIR/demo-site"
 
 echo "Cloudflare Deployment Funnel Setup"
@@ -25,12 +25,9 @@ SITE_DIR=${SITE_DIR:-$DEFAULT_SITE_DIR}
 echo "Selected directory: $SITE_DIR"
 
 echo
-echo "Step 2: Pick where the reusable helper script should live."
-echo "  - You will run this script later to deploy in one command."
-echo "  - It can live inside this repo or anywhere on disk."
-echo "  - Press Enter to keep it here (publishfunnel.sh)."
-read -r -p "Helper script path [$DEFAULT_HELPER_PATH]: " HELPER_PATH
-HELPER_PATH=${HELPER_PATH:-$DEFAULT_HELPER_PATH}
+echo
+echo "Helper script will be saved to: $HELPER_PATH"
+echo "Move or rename it later if you prefer a different location."
 
 if [ ! -d "$SITE_DIR" ]; then
   echo "Creating site directory at $SITE_DIR"

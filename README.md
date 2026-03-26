@@ -63,12 +63,13 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-You'll be asked two simple questions — **just press Enter to accept the defaults** if you're not sure:
+You'll be asked **one simple question** — **press Enter to accept the default** if you're not sure:
 
 | Prompt | What it means | Tip |
 |--------|--------------|-----|
 | **Which folder to deploy?** | The local folder whose files will go live | Press Enter to use the current directory, or paste an absolute path like `/Users/you/sites/my-project` |
-| **Where to save the helper script?** | Where to create the reusable `publishfunnel.sh` file | Press Enter to save it here in this repo folder |
+
+The helper script (`publishfunnel.sh`) is generated automatically in this repo; move it wherever you like afterward.
 
 If you're not logged in to Cloudflare yet, a **browser window will open** — just click "Allow" to authorize.
 
@@ -94,7 +95,7 @@ That's it — your site is live!
 
 ## Deploying Updates
 
-Whenever you make changes to your files, just run the helper script:
+Whenever you make changes to your files, just run the helper script (saved as `publishfunnel.sh` in this repo; move it elsewhere anytime):
 
 ```bash
 ./publishfunnel.sh
