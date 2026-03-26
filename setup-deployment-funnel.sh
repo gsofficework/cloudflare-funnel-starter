@@ -2,18 +2,18 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEFAULT_PROJECT="private-funnel"
+PROJECT_SLUG="private-funnel"
 DEFAULT_SITE_DIR="$(pwd)"
 DEFAULT_HELPER_PATH="$SCRIPT_DIR/publishfunnel.sh"
 TEMPLATE_SITE_DIR="$SCRIPT_DIR/demo-site"
 
 echo "Cloudflare Deployment Funnel Setup"
 echo "----------------------------------"
-echo "Project slug is fixed to '$DEFAULT_PROJECT' (edit this script if you need another)."
+echo "Project slug is fixed to '$PROJECT_SLUG' (edit this script if you need another)."
 echo "You will choose a local folder to deploy and where to store the helper script."
 echo "If you are not already logged in with Wrangler, this script will open a browser window later to authenticate."
 
-PROJECT_NAME=$DEFAULT_PROJECT
+PROJECT_NAME=$PROJECT_SLUG
 
 echo
 echo "Step 1: Tell me which local folder to deploy."
