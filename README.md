@@ -58,7 +58,7 @@ After setup you’re prompted to run the helper immediately (type `y` to deploy 
 ./publishfunnel.sh my-project /path/to/site   # override project + directory
 ```
 
-Each run zips the target directory, uploads it, and prints both the preview URL and canonical `https://<project>.pages.dev`. Use Cloudflare Access if you need password/SSO gating.
+Each run zips the target directory, uploads it, and prints the source folder plus both the preview URL and canonical `https://<project>.pages.dev`. Use Cloudflare Access if you need password/SSO gating.
 
 ---
 

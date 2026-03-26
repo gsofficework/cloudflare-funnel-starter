@@ -77,10 +77,11 @@ if [ ! -d "$site_dir" ]; then
   echo "Directory $site_dir does not exist" >&2
   exit 1
 fi
+echo "Deploying directory: $site_dir"
 pushd "$site_dir" >/dev/null
 wrangler pages deploy . --project-name="$project" --commit-dirty=true
 popd >/dev/null
-echo "Deployed to https://$project.pages.dev (check Cloudflare dashboard for Access policies)"
+echo "Deployed $site_dir to https://$project.pages.dev (check Cloudflare dashboard for Access policies)"
 SCRIPT
 
 python3 <<PY
