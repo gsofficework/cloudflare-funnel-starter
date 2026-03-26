@@ -18,10 +18,10 @@ Running the script will:
 2. Log you in to your Cloudflare account via browser
 3. Ask which local folder you want to deploy
 4. Create a Cloudflare Pages project for you
-5. Generate a reusable `publishfunnel.sh` helper script
+5. Generate a reusable helper script (default `./publishfunnel.sh`) after the first run
 6. Deploy your site and give you a live URL
 
-After setup, you just run `publishfunnel.sh` every time you want to push an update.
+Once setup finishes, it creates the helper script (default `./publishfunnel.sh`). Run that script whenever you want to push an update.
 
 ---
 
@@ -69,7 +69,7 @@ You'll be asked **one simple question** — **press Enter to accept the default*
 |--------|--------------|-----|
 | **Which folder to deploy?** | The local folder whose files will go live | Press Enter to use the current directory, or paste an absolute path like `/Users/you/sites/my-project` |
 
-The helper script (`publishfunnel.sh`) is generated automatically in this repo; move it wherever you like afterward.
+After setup completes, it drops a helper script (`publishfunnel.sh`) in this repo; move it wherever you like afterward. (It isn’t present until you’ve run the installer once.)
 
 If you're not logged in to Cloudflare yet, a **browser window will open** — just click "Allow" to authorize.
 
@@ -95,7 +95,7 @@ That's it — your site is live!
 
 ## Deploying Updates
 
-Whenever you make changes to your files, just run the helper script (saved as `publishfunnel.sh` in this repo; move it elsewhere anytime):
+After the helper script has been generated (during setup), run it whenever you change files:
 
 ```bash
 ./publishfunnel.sh
