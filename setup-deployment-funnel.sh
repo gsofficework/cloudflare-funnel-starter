@@ -9,19 +9,14 @@ TEMPLATE_SITE_DIR="$SCRIPT_DIR/demo-site"
 
 echo "Cloudflare Deployment Funnel Setup"
 echo "----------------------------------"
-echo "You will choose a Pages project, a local folder to deploy, and where to store the helper script."
+echo "Project slug is fixed to '$DEFAULT_PROJECT' (edit this script if you need another)."
+echo "You will choose a local folder to deploy and where to store the helper script."
 echo "If you are not already logged in with Wrangler, this script will open a browser window later to authenticate."
 
-echo
-echo "Step 1: Choose a Cloudflare Pages project slug."
-echo "  - This becomes the public URL: https://<slug>.pages.dev"
-echo "  - Enter an existing slug to reuse it, or a new slug to create a project."
-echo "  - Press Enter to accept the default shown in brackets."
-read -r -p "Project slug [$DEFAULT_PROJECT]: " PROJECT_NAME
-PROJECT_NAME=${PROJECT_NAME:-$DEFAULT_PROJECT}
+PROJECT_NAME=$DEFAULT_PROJECT
 
 echo
-echo "Step 2: Tell me which local folder to deploy."
+echo "Step 1: Tell me which local folder to deploy."
 echo "  - Provide an absolute path (e.g., /Users/you/sites/demo)."
 echo "  - If the folder is missing, a copy of demo-site/ will be created there."
 echo "  - Press Enter to use your current directory ($(pwd))."
@@ -30,7 +25,7 @@ SITE_DIR=${SITE_DIR:-$DEFAULT_SITE_DIR}
 echo "Selected directory: $SITE_DIR"
 
 echo
-echo "Step 3: Pick where the reusable helper script should live."
+echo "Step 2: Pick where the reusable helper script should live."
 echo "  - You will run this script later to deploy in one command."
 echo "  - It can live inside this repo or anywhere on disk."
 echo "  - Press Enter to keep it here (publishfunnel.sh)."

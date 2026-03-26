@@ -29,11 +29,10 @@ chmod +x setup-deployment-funnel.sh
 ./setup-deployment-funnel.sh
 ```
 
-You’ll answer three prompts (press Enter to accept the suggested default):
+The project slug is locked to `private-funnel` (edit the script if you need a different slug). During setup you’ll answer two prompts (press Enter to accept each default):
 
 | Prompt | What to type | Default |
 | --- | --- | --- |
-| Project slug | Name of the Pages project → `https://<slug>.pages.dev` | `private-funnel` |
 | Directory to deploy | Absolute path to the folder you want uploaded; missing paths get seeded with `demo-site/` | Current working directory |
 | Helper script path | Full path to the helper script the installer will create (you run this file—e.g., `/path/to/publishfunnel.sh`) | `./publishfunnel.sh` |
 
@@ -80,6 +79,7 @@ Feel free to customize the helper script or README to fit your workflow.
 
 1. `git clone https://github.com/you/cloudflare-funnel-starter.git && cd cloudflare-funnel-starter`
 2. `./setup-deployment-funnel.sh`  
-   - Respond `demo-app` for the slug, `/Users/you/sites/demo-app` for the directory, `/Users/you/bin/publishfunnel.sh` for the helper path.
-3. Edit `/Users/you/sites/demo-app/index.html`.
-4. Run `/Users/you/bin/publishfunnel.sh` to deploy. Cloudflare prints preview + canonical URLs in a few seconds.
+   - Press Enter to deploy the current directory (or type `/Users/you/sites/demo-app`).  
+   - Press Enter again to create the helper at `./publishfunnel.sh` (or provide `/Users/you/bin/publishfunnel.sh`).
+3. Edit the directory you selected in step 2 (e.g., `/Users/you/sites/demo-app/index.html`).
+4. Run `/Users/you/bin/publishfunnel.sh` (or the default path printed after setup). The script deploys to `https://private-funnel.pages.dev` and shows the preview URL.
