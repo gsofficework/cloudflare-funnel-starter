@@ -75,13 +75,7 @@ If you're not logged in to Cloudflare yet, a **browser window will open** — ju
 
 ### Step 4 — Deploy
 
-At the end of setup, you'll be asked:
-
-```
-Run it now? [y/N]:
-```
-
-Type `y` and press Enter. Your site will be uploaded and you'll see a live URL like:
+As soon as the prompts finish, the script deploys the folder you selected and prints the live URL:
 
 ```
 https://private-funnel.pages.dev
@@ -99,19 +93,13 @@ Whenever you want to publish changes, simply rerun the script:
 ./setup-deployment-funnel.sh
 ```
 
-Each run re-uploads the folder you select and prints both the preview and canonical URLs. The previous deployment stays live until the next one finishes.
+Each run re-uploads the folder you select and prints the canonical URL (`https://<slug>.pages.dev`). The previous deployment stays live until the next one finishes.
 
 ---
 
 ## Changing the Project Name
 
-The project slug is set to `private-funnel` by default. To use a different name, open `setup-deployment-funnel.sh` and edit this line near the top:
-
-```bash
-PROJECT_SLUG="private-funnel"
-```
-
-Change it to whatever you like, then run the setup script again.
+The project slug defaults to `private-funnel`. To change the default value, open `setup-deployment-funnel.sh` and edit the `DEFAULT_PROJECT_SLUG` variable near the top, then rerun the script.
 
 ---
 
