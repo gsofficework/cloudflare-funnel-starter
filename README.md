@@ -128,6 +128,14 @@ That's fine — the script will reuse the existing project and continue.
 **Deployed but can't see the site**
 Check your Cloudflare dashboard under Pages. If you need login/password protection, enable [Cloudflare Access](https://www.cloudflare.com/products/zero-trust/access/) on the project.
 
+**Accidentally deployed the wrong folder?**
+1. Rerun `./setup-deployment-funnel.sh` from the correct directory to immediately overwrite the bad deploy.  
+2. Or delete the whole Pages project:
+   - Visit [https://dash.cloudflare.com/login](https://dash.cloudflare.com/login) and sign in.
+   - Open [https://dash.cloudflare.com/?to=/:account/pages](https://dash.cloudflare.com/?to=/:account/pages) (Cloudflare jumps you to the Pages list for your account).
+   - Click the project named **private-funnel** → go to **Settings** → scroll to **Delete project** → follow the confirmation flow.
+   - The `*.pages.dev` domain is removed. Re-run the script whenever you want to recreate it.
+
 ---
 
 ## File Overview
